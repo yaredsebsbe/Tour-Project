@@ -1,0 +1,11 @@
+To run this project you need to follow this steps
+ 
+ 1, create virtual environment 
+ 2, I use postgresql as my database so if you want to change go to settings
+    file and change it to the one that you have
+ 3, Change also the name of the user and the password from the same file(settings.py)
+ 4, you need to create a database the same name as you write on the settig.py file
+
+ To see the effect of the project, you need to create a user and also you need to create a package 
+
+ 
