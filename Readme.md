@@ -1,0 +1,1 @@
+This project is made by "yaredyh0989@gmail.com" and it's built using Django as back-end.
