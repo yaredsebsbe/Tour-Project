@@ -1,0 +1,321 @@
+
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+</head>
+<style>
+    .sec{
+        padding: 40px 0;
+        height: 100vh;
+    }
+    .sec-bg{
+        background-image: url("{% static 'image\bg.jpg' %}");
+        background-size: cover;
+    }
+    .nav-link:hover{
+        color: blue;
+    }
+    .dest{
+        margin-top: 100px;
+    }
+    .ico{
+        font-size: 70px;
+    }
+    .social{
+        font-size: 20px;
+    }
+    .foot{
+        height: 100vh;
+    }
+</style>
+<body>
+    <section class="sec-bg sec">
+    <nav class="navbar navbar-expand-md navbar-light pt-5 pb-4">
+        <div class="container-xxl">
+          <!-- navbar brand / title -->
+          <a class="navbar-brand" href="#home">
+            <span class="text-secondary fw-bold">             
+              <h1 class="display-4 text-light"><i class="bi bi-suitcase"></i>AddisTour</h1>
+            </span>
+          </a>
+          <!-- toggle button for mobile nav -->
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#main-nav" aria-controls="main-nav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon "></span>
+          </button>
+    
+          <!-- navbar links -->
+          <div class="collapse navbar-collapse justify-content-end align-center" id="main-nav">
+            <ul class="navbar-nav ">
+              <li class="nav-item">
+                <a class="nav-link text-light" href="#">Home</a>
+              </li>
+             
+    {% if request.session.gid and request.session.gname%}
+            <li class="nav-item d-none d-md-block">
+                <a class="nav-link text-light" href="{% url 'list_package' %}#tour">Your Package</a>
+            </li>
+            <li class="nav-item d-none d-md-block">
+                <a class="nav-link text-light" href="{% url 'createPackage' %}">Create Package</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link text-light" href="#contact">Contact</a>
+            </li>
+            
+            <li class="nav-item">
+                <a class="nav-link text-light" href="{% url 'logout' %}">Logout</a>
+            </li>
+            <li class="nav-item">
+                <p class="nav-link lead text-warning" href="#" >{{request.session.gname}}</p>
+            </li>  
+  {% elif request.session.tid %}
+            <li class="nav-item d-none d-md-block">
+                <a class="nav-link text-light" href="{% url 'package'%}">Packages</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link text-light" href="{% url 'guides'%}">Guides</a>
+            </li>
+            <li class="nav-item d-none d-md-block">
+                <a class="nav-link text-light" href="{% url 'booked' %}">Booked Package</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link text-light" href="#contact">Contact</a>
+            </li>
+            
+            <li class="nav-item">
+                <a class="nav-link text-light" href="{% url 'logout' %}">Logout</a>
+            </li>
+  {% else %}
+            <li class="nav-item d-none d-md-block">
+                <a class="nav-link text-light" href="/#about">About</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link text-light" href="/#tour">Destination</a>
+            </li>
+            <li class="nav-item d-none d-md-block">
+                <a class="nav-link text-light" href="{% url 'package'%}">Package</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link text-light" href="{% url 'guides'%}">Guides</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link text-light" href="#contact">Contact</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link text-light" href="{% url 'redirLog' %}">Login</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link text-light" href="{% url 'redirSign' %}" >Sign up</a>
+            </li>
+  {% endif %}          
+                                
+            </ul>
+          </div>
+        </div>
+      </nav>
+
+      <div class="text-center dest">
+        <p class="display-6 text-light">Addis Ababa</p>
+        <h1 class="display-3 text-light">Unforgettable Memories</h1>
+      </div>
+    </section>
+    <!--end of home section-->
+    {% if request.session.gid and request.session.gname%}
+    {% elif request.session.tid %}
+    <section id="tour" class="sec">
+        <div class="text-center">
+            <h1 class="display-4">Popular Destinations</h1>
+        </div>
+        <div class="container-lg bg-light">
+            <div class="row">
+                <div class="col-3 px-3 py-5">
+                    <img src="{% static 'image/merkato2.jpg'%}" alt="" class="img-fluid">
+                    <div class="text-center text-dark">
+                        <h1 class="display-6">
+                            Merkato
+                        </h1>
+                        <p class="lead text-info">
+                            The biggest open market in Africa
+                        </p>
+                    </div>
+                </div>
+                <div class="col-3 px-3 py-5">
+                    <img src="{% static 'image/yekatit12.jpg'%}" alt="" class="img-fluid">
+                    <div class="text-center text-dark">
+                        <h1 class="display-6">
+                            Yekatit 12 sacrifies
+                        </h1>
+                        <p class="lead text-info">
+                            The museum which shows the story in yekatit 12
+                        </p>
+                    </div>
+                </div>
+                <div class="col-3 px-3 py-5 border-primary">
+                    <img src="{% static 'image/scGeorge.jpg'%}" alt="" class="img-fluid">
+                    <div class="text-center text-dark">
+                        <h1 class="display-6">
+                            Sc. George Church
+                        </h1>
+                        <p class="lead text-info">
+                            One of the historical church in ethiopia which is build by italian peoples 
+                        </p>
+                    </div>
+                </div>
+                <div class="col-3 px-3 py-5">
+                    <img src="{% static 'image/nationalMuseum.jpg'%}" alt="" class="img-fluid">
+                    <div class="text-center text-dark">
+                        <h1 class="display-6">
+                            National Museum
+                        </h1>
+                        <p class="lead text-info">
+                            The Museum with Lucy 
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    {% else %}
+    
+    <section id="about" class="d-none d-md-block sec">
+        <div class="container-lg p-5">
+            <div class="row">
+                <div class="col-4 bg-primary">
+                    <div class="text-center">
+                        <i class="bi bi-flower1 text-warning text-center ico "></i>
+                        <h1 class="display-5 text-light text-center my-5">Addis Ababa</h1>
+                        <p class="lead text-light px-5 ">Addis Ababa, Ethiopia’s sprawling capital in the highlands bordering the Great Rift Valley, is the country’s commercial and cultural hub.</p>
+                    </div>                    
+                </div>
+
+                <div class="col-4 bg-light">
+                    <div class="text-center">
+                        <i class="bi bi-airplane-engines text-primary text-center ico"></i>
+                        <h1 class="display-5 text-dark text-center my-5">Tourists</h1>
+                        <p class="lead text-dark px-5 ">Immerse yourself in the rich history and captivating stories of Addis Ababa. Explore ancient ruins that whisper tales of civilizations past, or stroll through charming cobblestone streets lined with architectural marvels.</p>
+                    </div>                    
+                </div>
+
+                <div class="col-4 bg-light">
+                    <div class="text-center">
+                        <i class="bi bi-boxes ico text-info"></i>
+                        <h1 class="display-5 text-dark text-center my-5">Guides</h1>
+                        <p class="lead text-dark px-5 ">Calling all passionate and knowledgeable tour guides! Join our dynamic team and embark on a rewarding journey showcasing the wonders of Addis Ababa.</p>
+                    </div>                    
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <section id="tour" class="sec">
+        <div class="text-center">
+            <h1 class="display-4">Popular Destinations</h1>
+        </div>
+        <div class="container-lg bg-light">
+            <div class="row">
+                <div class="col-3 px-3 py-5">
+                    <img src="{% static 'image/merkato2.jpg'%}" alt="" class="img-fluid">
+                    <div class="text-center text-dark">
+                        <h1 class="display-6">
+                            Merkato
+                        </h1>
+                        <p class="lead text-info">
+                            The biggest open market in Africa
+                        </p>
+                    </div>
+                </div>
+                <div class="col-3 px-3 py-5">
+                    <img src="{% static 'image/yekatit12.jpg'%}" alt="" class="img-fluid">
+                    <div class="text-center text-dark">
+                        <h1 class="display-6">
+                            Yekatit 12 sacrifies
+                        </h1>
+                        <p class="lead text-info">
+                            The museum which shows the story in yekatit 12
+                        </p>
+                    </div>
+                </div>
+                <div class="col-3 px-3 py-5 border-primary">
+                    <img src="{% static 'image/scGeorge.jpg'%}" alt="" class="img-fluid">
+                    <div class="text-center text-dark">
+                        <h1 class="display-6">
+                            Sc. George Church
+                        </h1>
+                        <p class="lead text-info">
+                            One of the historical church in ethiopia which is build by italian peoples 
+                        </p>
+                    </div>
+                </div>
+                <div class="col-3 px-3 py-5">
+                    <img src="{% static 'image/nationalMuseum.jpg'%}" alt="" class="img-fluid">
+                    <div class="text-center text-dark">
+                        <h1 class="display-6">
+                            National Museum
+                        </h1>
+                        <p class="lead text-info">
+                            The Museum with Lucy 
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    {% endif  %}
+    
+    <section id="contact">
+        <div class="container-xxl foot bg-dark text-light">
+            <div class="text-center pb-5">
+                <h1 class="display-5">Contact</h1>
+                
+            </div>
+            <div class="row justify-content-center">
+                <div class="col-md-5 py-5 text-center">
+                    <p class="lead fw-bold ">Address</p>
+                    <div>
+                        <p class="text-light lead"><i class="bi bi-envelope-at-fill text-info"></i> yaredyh11@gmail.com</a></p>
+                        <p class="text-light lead"><i class="bi bi-telephone-fill text-danger"></i> 0989823399</a></p>
+                        <p class="text-light lead"><i class="bi bi-house-door-fill text-success"></i> Addis Ababa, Ethiopia</a></p>
+                    </div>
+                    
+                </div>
+
+                <div class="col-md-4 py-5 text-center">
+                    <p class="lead fw-bold">Social Media</p>
+                    <div>
+                        <p class="text-light lead"><a href="https://www.instagram.com/yaredyh11/" target="_blank" class="text-decoration-none"><i class=" social bi bi-instagram text-info"></i> contact on instagram </a></p>
+                        <p class="text-light lead"><a href="https://t.me/D_id_Y" target="_blank" class="text-decoration-none"> <i class=" social bi bi-telegram text-warning"></i> contact on telegram </a></p>
+                        <p class="text-light lead"><a href="https://www.facebook.com/yaredyh11/" target="_blank" class="text-decoration-none"><i class=" social bi bi-facebook text-danger"></i> contact on facebook</a></p>
+                    </div>
+                    
+                </div>
+
+                <div class="col-md-3 py-5 text-center">
+                    <p class="lead fw-bold">Links</p>
+                    <div class="">
+                        <p><a href="#" id="home" class="text-decoration-none text-info">Home</a></p>
+                        <p><a href="#" id="about" class="text-decoration-none text-info">About</a></p>
+                        <p><a href="#" id="tour" class="text-decoration-none text-info">Destination</a></p>
+                        <p><a href="#" class="text-decoration-none text-info">Packages</a></p>
+                        <p><a href="{% url 'guides' %}" class="text-decoration-none text-info">Guides</a></p>
+                        <p><a class="text-decoration-none text-info" href="{% url 'guideReg' %}" >Sign up</a></p>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
+</body>
+</html>

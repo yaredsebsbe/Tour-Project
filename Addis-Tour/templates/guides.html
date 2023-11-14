@@ -1,0 +1,34 @@
+{% extends 'pbase.html' %}
+{% block title%}hotel-4.jpg{% endblock %}
+{% load static%}
+{% block content%}
+
+<style>
+    .imgRe{
+        width: 20vw;
+        height:20vw;
+        border-radius: 8px;
+    }
+</style>
+<div class="text-center m-4">
+    <h1 class="display-4 text-secondary">Guides</h1>
+</div>
+<div class="row bg-light p-2">
+    {% for guide in guides %}
+    <div class="col-md-5 py-5 m-3">
+        <div class="row align-items-center">
+
+            <div class="col-5">
+                <img src="{{guide.guidePic.url}}" alt="" class=" imgRe img-fluid">
+            </div>
+            <div class="col-5">
+                <p class="mt-2">Name: <span class="text-secondary fw-bold">{{guide.guideFname}} {{guide.guideLname}}</span></p>
+                <p class="mt-2">Qualification: <span class="text-secondary fw-bold">{{guide.guideQualification}}</span></p>
+                <p><a href="#" class="btn btn-outline-primary">packages</a></p>
+            </div>  
+                    
+        </div>     
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}

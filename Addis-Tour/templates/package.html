@@ -1,0 +1,17 @@
+{%extends 'pbase.html' %}
+{% block title%}cover-img-4.jpg{% endblock %}
+{% block content %}
+<div class="row my-3">
+  {%for package in packages%}
+  <div class="col-md-4 text-center py-5">
+      <img src="{{ package.packageImage.url }}" class="img-fluid img" alt="">
+      <p class="display-6  pt-4 text-secondary">{{package.packageName}}</p>
+      <small>Location:{{package.packageLocation}}</small>
+      <p class="prop text-center py-2 text-secondary text-center">Features: {{package.packageFeature}}</p>
+      <p class="prop text-wrap text-center text-secondary">Description: {{package.packageDescription}}</p>
+      <small>Guide:Yared Sebsbe</small>
+      <p><a href="{% url 'book' %}" class="btn btn-primary mt-3">Book</a></p>
+  </div>
+  {% endfor %}
+</div>
+{% endblock %}

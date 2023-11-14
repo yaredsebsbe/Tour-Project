@@ -1,0 +1,27 @@
+{% extends 'guide_form_base.html' %}
+{% load static %}
+            
+            
+                {% block bg %}{% static 'image/log_bg.jpg' %}{%endblock%}
+                {%block head%}Tour With</h1>{%endblock%}
+                {% block p %}Us{%endblock%}
+            
+            {% block content %}
+                <form action="/userLogin" method="post" enctype="multipart/form-data">
+                    {%csrf_token%}
+                    <div class="spacing"></div>
+                    <h2 class="display-4 text-light  mt-5 mt-lg-2">Log In</h2>
+                    <input type="text" name="uUname" placeholder="Email or phone number" class="form-control px-lg-2 py-2"><br>
+                    <input type="password" name="uPassw" placeholder="Password" class="form-control py-2 px-lg-2"><br>
+                    <button type="submit" class="btn button btn-outline-light btn-lg">Sign in</button>
+                    <div class="row mt-5 justify-content-center">
+                        <div class="col-6 col-md-6 px-3">
+                            <a href="{% url 'guideForget' %}" class="text-decoration-none link ">forget password</a>
+                        </div>
+                        <div class="col-6 col-md-6 px-3">
+                            <a href="guideReg" class="text-decoration-none link">sign-up</a>
+                        </div>
+                    </div>
+                    
+                </form>
+                {% endblock %}

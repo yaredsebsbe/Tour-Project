@@ -1,0 +1,22 @@
+{% extends 'guide_form_base.html' %}
+{% load static %}
+
+
+                {% block bg %}{% static 'image/reg-bg.jpg' %}{%endblock%}
+                {%block head%}Tour with</h1>{%endblock%}
+                {% block p %}Different Guides{%endblock%}
+            </div>
+
+            {% block content %}
+                <form action="/userReg" method="post" enctype="multipart/form-data">
+                    {%csrf_token%}
+                    <h2 class="display-5 text-light">Sign up</h2>
+                    <input type="text" name="uUname" placeholder="Username" class="form-control p-2 mt-2"><br>
+                    <input type="email" name="uEmail" placeholder="Email" class="form-control p-2"><br>
+                    <input type="passsword" name="uPassw" placeholder="Pssword" class="form-control p-2"><br>
+                    
+                    <button type="submit" class="btn button btn-outline-light btn-lg">signup</button>
+                    <span class="text-light ms-5">Already have an account ?</span><a href="guideLog" class="text-decoration-none link p-2">Login</a>
+                    
+                </form>
+                {% endblock %}

@@ -1,0 +1,25 @@
+{% extends 'guide_form_base.html' %}
+{% load static %}
+
+
+                {% block bg %}{% static 'image/reg-bg.jpg' %}{%endblock%}
+                {%block head%}Work with</h1>{%endblock%}
+                {% block p %}Us{%endblock%}
+            </div>
+
+            {% block content %}
+                <form action="/guideReg" method="post" enctype="multipart/form-data">
+                    {%csrf_token%}
+                    <h2 class="display-5 text-light">Register</h2>
+                    <input type="text" name="gfname" placeholder="First Name" class="form-control p-2 mt-2"><br>
+                    <input type="text" name="glname" placeholder="Last Name" class="form-control p-2"><br>
+                    <input type="text" name="gqual" placeholder="Qualification" class="form-control p-2"><br>
+                    <input type="text" name="gphone" placeholder="Phone number" class="form-control p-2"><br>
+                    <input type="text" name="gemail" placeholder="Email" class="form-control p-2"><br>
+                    <input type="password" name="gpass" placeholder="Password" class="form-control p-2"><br>
+                    <input type="file" name="gimg" class="form-control p-2"><br>
+                    <button type="submit" class="btn button btn-outline-light btn-lg">Register</button>
+                    <span class="text-light ms-5">Already have an account ?</span><a href="guideLog" class="text-decoration-none link p-2">Login</a>
+                    
+                </form>
+                {% endblock %}

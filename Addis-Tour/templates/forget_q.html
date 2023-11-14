@@ -1,0 +1,26 @@
+{% extends 'guide_form_base.html' %}
+{% load static %}
+            
+            
+            {% block bg %}{% static 'image/qa-bg.jpg' %}{%endblock%}
+
+            {%block head%}Get Your</h1>{%endblock%}
+            {% block p %}Tourists{%endblock%}
+            
+            {% block content %}
+                <form action="/forget_q" method="post" enctype="multipart/form-data">
+                    {%csrf_token%}
+                    <div class="spacing"></div>
+                    <h2 class="display-4 text-light  mt-5 mt-lg-2">Verify Question</h2>
+                    <input type="text"  name="eml" value="{{ request.session.gemail }}" disabled class="form-control px-lg-2 py-2 mt-3"><br>
+                    <select name="question" id="subject" class="form-select">
+                        <option value="pricing" selected disabled>Select a question to verify</option>
+                        <option value="What is your birth year?">What is your birth year?</option>
+                        <option value="Your Favorite Person?">Your Favorite Person?</option>
+                        <option value="Your pet name?">Your pet name?</option>
+                    </select>
+                    <input type="text" name="answer" placeholder="Your Answer" class="form-control px-lg-2 py-2 mt-3"><br>
+                    <button type="submit" class="btn button btn-outline-light btn-lg">Set Q&A</button>
+                    
+                </form>
+                {% endblock %}

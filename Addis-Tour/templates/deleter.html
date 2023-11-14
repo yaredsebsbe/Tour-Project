@@ -1,0 +1,21 @@
+{% extends 'guide_form_base.html' %}
+{% load static %}
+            
+            
+            {% block bg %}{% static 'image/qa-bg.jpg' %}{%endblock%}
+
+            {%block head%}Get Your</h1>{%endblock%}
+            {% block p %}Tourists{%endblock%}
+            
+            {% block content %}
+                <form action="/deleter" method="post" enctype="multipart/form-data">
+                    {%csrf_token%}
+                    <div class="spacing"></div>
+                    <h2 class="display-4 text-light  mt-5 mt-lg-2">Delete User</h2>
+                    
+                    <input type="text" name="del" placeholder="id" class="form-control px-lg-2 py-2 mt-3"><br>
+                    <button type="submit" class="btn button btn-outline-danger btn-lg">Delete</button>
+        
+                    
+                </form>
+                {% endblock %}

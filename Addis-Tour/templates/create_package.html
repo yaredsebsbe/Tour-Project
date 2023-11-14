@@ -1,0 +1,24 @@
+{% extends 'guide_form_base.html' %}
+{% load static %}
+
+{% block bg %}{% static 'image/reg-bg.jpg' %}{%endblock%}
+                {%block head%}Work with</h1>{%endblock%}
+                {% block p %}Us{%endblock%}
+            </div>
+    {% block content %}
+    <form action="/createPackage" method="post" enctype="multipart/form-data">
+        {%csrf_token%}
+        <h2 class="display-5 text-light mt-lg-2">Create Package</h2>
+        <input type="text" name="pname" placeholder="Package Name" class="form-control p-2"><br>
+        <input type="text" name="pfeature" placeholder="Package Features" class="form-control p-2"><br>
+        <input type="text" name="plocation" placeholder="Package Location" class="form-control p-2"><br>
+        <input type="text" name="pprice" placeholder="Package Price" class="form-control p-2"><br>
+        <div class="form-floating mb-4">
+            <textarea id="query" class="form-control" style="height: 100px;" name="description"></textarea>
+            <label for="query">Package description</label>
+        </div>
+        <input type="file" name="img" class="form-control p-2 m"><br>
+        <button type="submit" class="btn button btn-outline-light btn-lg">Create</button>
+        
+    </form>
+{% endblock %}
